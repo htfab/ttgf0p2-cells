@@ -1,20 +1,21 @@
-<!---
-
-This file is used to generate your project datasheet. Please fill in the information below and delete any unused
-sections.
-
-You can also include images in this folder and reference them in the markdown. Each image must be less than
-512 kb in size, and the combined size of all images must be less than 1 MB.
--->
-
 ## How it works
 
-Explain how your project works
+Instantiates one copy of each standard cell from the GF180mcu 7-track library,
+and multiplexes the project i/o pins so that the functional behaviour of
+each cell can be verified.
+
+The instantiated cells have a total of 210 output pins, arranged into
+27 pages of 8 pins each. Once a certain page is selected, those 8 outputs
+are mapped to the project output pins.
 
 ## How to test
 
-Explain how to use your project
+Select a page using `ui_in[4:0]`.
+
+Set the cell inputs using `ui_in[7:5]` and `uio_in[2:0]`.
+
+The cell outputs for the selected page should appear on `uo_out`.
 
 ## External hardware
 
-List external hardware used in your project (e.g. PMOD, LED display, etc), if any
+None
