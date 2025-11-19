@@ -20,7 +20,7 @@ module tb ();
   reg [4:0] page;
   reg [5:0] cell_in;
   wire [7:0] ui_in = {cell_in[2:0], page};
-  wire [7:0] uio_in = {5'b0, cell_in[5:3]};
+  wire [7:0] uio_in = {5'b00001, cell_in[5:3]};
   wire [7:0] uo_out;
   wire [7:0] uio_out;
   wire [7:0] uio_oe;

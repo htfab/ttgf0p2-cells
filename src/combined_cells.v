@@ -1,6 +1,7 @@
 `default_nettype none
 
 module combined_cells (
+    input tristate_gate,
     input [5:0] in,
     output [209:0] out
 );
@@ -205,26 +206,27 @@ module combined_cells (
 
 // tri-state buffers
 /////////////////////
+wire [5:0] gated_in = in & {6{tristate_gate}};
 tri [4:0] tribuf;
-(* keep *) gf180mcu_fd_sc_mcu7t5v0__bufz_1 bufz_1_inst_notouch_(.EN(in[0]), .I(in[1]), .Z(tribuf[0]));
-(* keep *) gf180mcu_fd_sc_mcu7t5v0__bufz_2 bufz_2_inst_notouch_(.EN(in[2]), .I(in[3]), .Z(tribuf[0]));
-(* keep *) gf180mcu_fd_sc_mcu7t5v0__bufz_3 bufz_3_inst_notouch_(.EN(in[4]), .I(in[5]), .Z(tribuf[0]));
+(* keep *) gf180mcu_fd_sc_mcu7t5v0__bufz_1 bufz_1_inst_notouch_(.EN(gated_in[0]), .I(in[1]), .Z(tribuf[0]));
+(* keep *) gf180mcu_fd_sc_mcu7t5v0__bufz_2 bufz_2_inst_notouch_(.EN(gated_in[2]), .I(in[3]), .Z(tribuf[0]));
+(* keep *) gf180mcu_fd_sc_mcu7t5v0__bufz_3 bufz_3_inst_notouch_(.EN(gated_in[4]), .I(in[5]), .Z(tribuf[0]));
 assign out[171] = tribuf[0];
-(* keep *) gf180mcu_fd_sc_mcu7t5v0__bufz_4 bufz_4_inst_notouch_(.EN(in[0]), .I(in[1]), .Z(tribuf[1]));
-(* keep *) gf180mcu_fd_sc_mcu7t5v0__bufz_8 bufz_8_inst_notouch_(.EN(in[2]), .I(in[3]), .Z(tribuf[1]));
-(* keep *) gf180mcu_fd_sc_mcu7t5v0__bufz_12 bufz_12_inst_notouch_(.EN(in[4]), .I(in[5]), .Z(tribuf[1]));
+(* keep *) gf180mcu_fd_sc_mcu7t5v0__bufz_4 bufz_4_inst_notouch_(.EN(gated_in[0]), .I(in[1]), .Z(tribuf[1]));
+(* keep *) gf180mcu_fd_sc_mcu7t5v0__bufz_8 bufz_8_inst_notouch_(.EN(gated_in[2]), .I(in[3]), .Z(tribuf[1]));
+(* keep *) gf180mcu_fd_sc_mcu7t5v0__bufz_12 bufz_12_inst_notouch_(.EN(gated_in[4]), .I(in[5]), .Z(tribuf[1]));
 assign out[172] = tribuf[1];
-(* keep *) gf180mcu_fd_sc_mcu7t5v0__bufz_16 bufz_16_inst_notouch_(.EN(in[0]), .I(in[1]), .Z(tribuf[2]));
+(* keep *) gf180mcu_fd_sc_mcu7t5v0__bufz_16 bufz_16_inst_notouch_(.EN(gated_in[0]), .I(in[1]), .Z(tribuf[2]));
 (* keep *) gf180mcu_fd_sc_mcu7t5v0__hold hold_inst_notouch_(.Z(tribuf[2]));
-(* keep *) gf180mcu_fd_sc_mcu7t5v0__invz_1 invz_1_inst_notouch_(.EN(in[2]), .I(in[3]), .ZN(tribuf[2]));
+(* keep *) gf180mcu_fd_sc_mcu7t5v0__invz_1 invz_1_inst_notouch_(.EN(gated_in[2]), .I(in[3]), .ZN(tribuf[2]));
 assign out[173] = tribuf[2];
-(* keep *) gf180mcu_fd_sc_mcu7t5v0__invz_2 invz_2_inst_notouch_(.EN(in[0]), .I(in[1]), .ZN(tribuf[3]));
-(* keep *) gf180mcu_fd_sc_mcu7t5v0__invz_3 invz_3_inst_notouch_(.EN(in[2]), .I(in[3]), .ZN(tribuf[3]));
-(* keep *) gf180mcu_fd_sc_mcu7t5v0__invz_4 invz_4_inst_notouch_(.EN(in[4]), .I(in[5]), .ZN(tribuf[3]));
+(* keep *) gf180mcu_fd_sc_mcu7t5v0__invz_2 invz_2_inst_notouch_(.EN(gated_in[0]), .I(in[1]), .ZN(tribuf[3]));
+(* keep *) gf180mcu_fd_sc_mcu7t5v0__invz_3 invz_3_inst_notouch_(.EN(gated_in[2]), .I(in[3]), .ZN(tribuf[3]));
+(* keep *) gf180mcu_fd_sc_mcu7t5v0__invz_4 invz_4_inst_notouch_(.EN(gated_in[4]), .I(in[5]), .ZN(tribuf[3]));
 assign out[174] = tribuf[3];
-(* keep *) gf180mcu_fd_sc_mcu7t5v0__invz_8 invz_8_inst_notouch_(.EN(in[0]), .I(in[1]), .ZN(tribuf[4]));
-(* keep *) gf180mcu_fd_sc_mcu7t5v0__invz_12 invz_12_inst_notouch_(.EN(in[2]), .I(in[3]), .ZN(tribuf[4]));
-(* keep *) gf180mcu_fd_sc_mcu7t5v0__invz_16 invz_16_inst_notouch_(.EN(in[4]), .I(in[5]), .ZN(tribuf[4]));
+(* keep *) gf180mcu_fd_sc_mcu7t5v0__invz_8 invz_8_inst_notouch_(.EN(gated_in[0]), .I(in[1]), .ZN(tribuf[4]));
+(* keep *) gf180mcu_fd_sc_mcu7t5v0__invz_12 invz_12_inst_notouch_(.EN(gated_in[2]), .I(in[3]), .ZN(tribuf[4]));
+(* keep *) gf180mcu_fd_sc_mcu7t5v0__invz_16 invz_16_inst_notouch_(.EN(gated_in[4]), .I(in[5]), .ZN(tribuf[4]));
 assign out[175] = tribuf[4];
 
 // delay buffers

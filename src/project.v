@@ -12,6 +12,7 @@ module tt_um_htfab_cells (
 );
 
 cell_mux cm_inst (
+    .tristate_gate(uio_in[3] && ena),
     .page(ui_in[4:0]),
     .in({uio_in[2:0], ui_in[7:5]}),
     .out(uo_out)
@@ -19,6 +20,6 @@ cell_mux cm_inst (
 
 assign uio_out = 0;
 assign uio_oe = 0;
-wire _unused = &{ena, clk, rst_n, uio_in[7:3], 1'b0};
+wire _unused = &{clk, rst_n, uio_in[7:4], 1'b0};
 
 endmodule
