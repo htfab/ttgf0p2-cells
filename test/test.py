@@ -213,9 +213,7 @@ async def test_cells(dut):
         (162, 163, 164): 'sdfrtp',
         (165, 166, 167): 'sdfstp',
         (168, 169, 170): 'sdfbtp',
-        (171, 172): '#tritest0',
-        (173,): '#tritest2',
-        (174, 175): '#tritest1',
+        (171, 172, 173, 174, 175): 'tiel',  # tristate cells are disabled on this shuttle
         (176, 177, 178, 179, 180, 181, 182, 183, 184, 185, 186, 187): 'dlygate',
         (188, 189, 190, 191, 192, 193, 194, 195): 'clkbuf',
         (196, 197, 198, 199, 200, 201, 202, 203): 'clkinv',

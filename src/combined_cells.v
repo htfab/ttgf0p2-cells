@@ -206,40 +206,42 @@ module combined_cells (
 
 // tri-state buffers
 /////////////////////
-wire [5:0] gated_in = in & {6{tristate_gate}};
-wire tristate_gate_b;
-tri [4:0] tribuf;
-(* keep *) gf180mcu_fd_sc_mcu7t5v0__inv_1 tristate_gate_inv_notouch_(.I(tristate_gate), .ZN(tristate_gate_b));
+//wire [5:0] gated_in = in & {6{tristate_gate}};
+//wire tristate_gate_b;
+//tri [4:0] tribuf;
+//(* keep *) gf180mcu_fd_sc_mcu7t5v0__inv_1 tristate_gate_inv_notouch_(.I(tristate_gate), .ZN(tristate_gate_b));
+//
+//(* keep *) gf180mcu_fd_sc_mcu7t5v0__bufz_1 bufz_1_inst_notouch_(.EN(gated_in[0]), .I(in[1]), .Z(tribuf[0]));
+//(* keep *) gf180mcu_fd_sc_mcu7t5v0__bufz_2 bufz_2_inst_notouch_(.EN(gated_in[2]), .I(in[3]), .Z(tribuf[0]));
+//(* keep *) gf180mcu_fd_sc_mcu7t5v0__bufz_3 bufz_3_inst_notouch_(.EN(gated_in[4]), .I(in[5]), .Z(tribuf[0]));
+//(* keep *) gf180mcu_fd_sc_mcu7t5v0__bufz_1 safety_bufz_171_notouch_(.EN(tristate_gate_b), .I(0), .Z(tribuf[0]));
+//(* keep *) gf180mcu_fd_sc_mcu7t5v0__and2_1 safety_and2_171_notouch_(.A1(tribuf[0]), .A2(tristate_gate), .Z(out[171]));
+//
+//(* keep *) gf180mcu_fd_sc_mcu7t5v0__bufz_4 bufz_4_inst_notouch_(.EN(gated_in[0]), .I(in[1]), .Z(tribuf[1]));
+//(* keep *) gf180mcu_fd_sc_mcu7t5v0__bufz_8 bufz_8_inst_notouch_(.EN(gated_in[2]), .I(in[3]), .Z(tribuf[1]));
+//(* keep *) gf180mcu_fd_sc_mcu7t5v0__bufz_12 bufz_12_inst_notouch_(.EN(gated_in[4]), .I(in[5]), .Z(tribuf[1]));
+//(* keep *) gf180mcu_fd_sc_mcu7t5v0__bufz_1 safety_bufz_172_notouch_(.EN(tristate_gate_b), .I(0), .Z(tribuf[1]));
+//(* keep *) gf180mcu_fd_sc_mcu7t5v0__and2_1 safety_and2_172_notouch_(.A1(tribuf[1]), .A2(tristate_gate), .Z(out[172]));
+//
+//(* keep *) gf180mcu_fd_sc_mcu7t5v0__bufz_16 bufz_16_inst_notouch_(.EN(gated_in[0]), .I(in[1]), .Z(tribuf[2]));
+//(* keep *) gf180mcu_fd_sc_mcu7t5v0__hold hold_inst_notouch_(.Z(tribuf[2]));
+//(* keep *) gf180mcu_fd_sc_mcu7t5v0__invz_1 invz_1_inst_notouch_(.EN(gated_in[2]), .I(in[3]), .ZN(tribuf[2]));
+//(* keep *) gf180mcu_fd_sc_mcu7t5v0__bufz_1 safety_bufz_173_notouch_(.EN(tristate_gate_b), .I(0), .Z(tribuf[2]));
+//(* keep *) gf180mcu_fd_sc_mcu7t5v0__and2_1 safety_and2_173_notouch_(.A1(tribuf[2]), .A2(tristate_gate), .Z(out[173]));
+//
+//(* keep *) gf180mcu_fd_sc_mcu7t5v0__invz_2 invz_2_inst_notouch_(.EN(gated_in[0]), .I(in[1]), .ZN(tribuf[3]));
+//(* keep *) gf180mcu_fd_sc_mcu7t5v0__invz_3 invz_3_inst_notouch_(.EN(gated_in[2]), .I(in[3]), .ZN(tribuf[3]));
+//(* keep *) gf180mcu_fd_sc_mcu7t5v0__invz_4 invz_4_inst_notouch_(.EN(gated_in[4]), .I(in[5]), .ZN(tribuf[3]));
+//(* keep *) gf180mcu_fd_sc_mcu7t5v0__bufz_1 safety_bufz_174_notouch_(.EN(tristate_gate_b), .I(0), .Z(tribuf[3]));
+//(* keep *) gf180mcu_fd_sc_mcu7t5v0__and2_1 safety_and2_174_notouch_(.A1(tribuf[3]), .A2(tristate_gate), .Z(out[174]));
+//
+//(* keep *) gf180mcu_fd_sc_mcu7t5v0__invz_8 invz_8_inst_notouch_(.EN(gated_in[0]), .I(in[1]), .ZN(tribuf[4]));
+//(* keep *) gf180mcu_fd_sc_mcu7t5v0__invz_12 invz_12_inst_notouch_(.EN(gated_in[2]), .I(in[3]), .ZN(tribuf[4]));
+//(* keep *) gf180mcu_fd_sc_mcu7t5v0__invz_16 invz_16_inst_notouch_(.EN(gated_in[4]), .I(in[5]), .ZN(tribuf[4]));
+//(* keep *) gf180mcu_fd_sc_mcu7t5v0__bufz_1 safety_bufz_175_notouch_(.EN(tristate_gate_b), .I(0), .Z(tribuf[4]));
+//(* keep *) gf180mcu_fd_sc_mcu7t5v0__and2_1 safety_and2_175_notouch_(.A1(tribuf[4]), .A2(tristate_gate), .Z(out[175]));
 
-(* keep *) gf180mcu_fd_sc_mcu7t5v0__bufz_1 bufz_1_inst_notouch_(.EN(gated_in[0]), .I(in[1]), .Z(tribuf[0]));
-(* keep *) gf180mcu_fd_sc_mcu7t5v0__bufz_2 bufz_2_inst_notouch_(.EN(gated_in[2]), .I(in[3]), .Z(tribuf[0]));
-(* keep *) gf180mcu_fd_sc_mcu7t5v0__bufz_3 bufz_3_inst_notouch_(.EN(gated_in[4]), .I(in[5]), .Z(tribuf[0]));
-(* keep *) gf180mcu_fd_sc_mcu7t5v0__bufz_1 safety_bufz_171_notouch_(.EN(tristate_gate_b), .I(0), .Z(tribuf[0]));
-(* keep *) gf180mcu_fd_sc_mcu7t5v0__and2_1 safety_and2_171_notouch_(.A1(tribuf[0]), .A2(tristate_gate), .Z(out[171]));
-
-(* keep *) gf180mcu_fd_sc_mcu7t5v0__bufz_4 bufz_4_inst_notouch_(.EN(gated_in[0]), .I(in[1]), .Z(tribuf[1]));
-(* keep *) gf180mcu_fd_sc_mcu7t5v0__bufz_8 bufz_8_inst_notouch_(.EN(gated_in[2]), .I(in[3]), .Z(tribuf[1]));
-(* keep *) gf180mcu_fd_sc_mcu7t5v0__bufz_12 bufz_12_inst_notouch_(.EN(gated_in[4]), .I(in[5]), .Z(tribuf[1]));
-(* keep *) gf180mcu_fd_sc_mcu7t5v0__bufz_1 safety_bufz_172_notouch_(.EN(tristate_gate_b), .I(0), .Z(tribuf[1]));
-(* keep *) gf180mcu_fd_sc_mcu7t5v0__and2_1 safety_and2_172_notouch_(.A1(tribuf[1]), .A2(tristate_gate), .Z(out[172]));
-
-(* keep *) gf180mcu_fd_sc_mcu7t5v0__bufz_16 bufz_16_inst_notouch_(.EN(gated_in[0]), .I(in[1]), .Z(tribuf[2]));
-(* keep *) gf180mcu_fd_sc_mcu7t5v0__hold hold_inst_notouch_(.Z(tribuf[2]));
-(* keep *) gf180mcu_fd_sc_mcu7t5v0__invz_1 invz_1_inst_notouch_(.EN(gated_in[2]), .I(in[3]), .ZN(tribuf[2]));
-(* keep *) gf180mcu_fd_sc_mcu7t5v0__bufz_1 safety_bufz_173_notouch_(.EN(tristate_gate_b), .I(0), .Z(tribuf[2]));
-(* keep *) gf180mcu_fd_sc_mcu7t5v0__and2_1 safety_and2_173_notouch_(.A1(tribuf[2]), .A2(tristate_gate), .Z(out[173]));
-
-(* keep *) gf180mcu_fd_sc_mcu7t5v0__invz_2 invz_2_inst_notouch_(.EN(gated_in[0]), .I(in[1]), .ZN(tribuf[3]));
-(* keep *) gf180mcu_fd_sc_mcu7t5v0__invz_3 invz_3_inst_notouch_(.EN(gated_in[2]), .I(in[3]), .ZN(tribuf[3]));
-(* keep *) gf180mcu_fd_sc_mcu7t5v0__invz_4 invz_4_inst_notouch_(.EN(gated_in[4]), .I(in[5]), .ZN(tribuf[3]));
-(* keep *) gf180mcu_fd_sc_mcu7t5v0__bufz_1 safety_bufz_174_notouch_(.EN(tristate_gate_b), .I(0), .Z(tribuf[3]));
-(* keep *) gf180mcu_fd_sc_mcu7t5v0__and2_1 safety_and2_174_notouch_(.A1(tribuf[3]), .A2(tristate_gate), .Z(out[174]));
-
-(* keep *) gf180mcu_fd_sc_mcu7t5v0__invz_8 invz_8_inst_notouch_(.EN(gated_in[0]), .I(in[1]), .ZN(tribuf[4]));
-(* keep *) gf180mcu_fd_sc_mcu7t5v0__invz_12 invz_12_inst_notouch_(.EN(gated_in[2]), .I(in[3]), .ZN(tribuf[4]));
-(* keep *) gf180mcu_fd_sc_mcu7t5v0__invz_16 invz_16_inst_notouch_(.EN(gated_in[4]), .I(in[5]), .ZN(tribuf[4]));
-(* keep *) gf180mcu_fd_sc_mcu7t5v0__bufz_1 safety_bufz_175_notouch_(.EN(tristate_gate_b), .I(0), .Z(tribuf[4]));
-(* keep *) gf180mcu_fd_sc_mcu7t5v0__and2_1 safety_and2_175_notouch_(.A1(tribuf[4]), .A2(tristate_gate), .Z(out[175]));
+assign out[175:171] = 0;    // disable tristate cells for this run
 
 // delay buffers
 /////////////////
